@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Cá Nhân - Trần Thị Yến Nhi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- Hiệu ứng tổng hợp: bong bóng + tuyết + pháo hoa + hoa/ tim khi di chuột -->
+<style>
+    /* ==== BONG BÓNG ==== */
+    .bubble {
+      position: fixed;
+      bottom: -50px;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.7;
+      animation: rise 8s linear forwards;
+      z-index: 9999;
+    }
+  
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+  
+    /* ==== TUYẾT RƠI ==== */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 16px;
+      user-select: none;
+      pointer-events: none;
+      z-index: 9998;
+      animation: fall 10s linear forwards;
+    }
+  
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  
+    /* ==== HOA / TIM THEO CHUỘT ==== */
+    .particle {
+      position: fixed;
+      font-size: 20px;
+      pointer-events: none;
+      z-index: 10000;
+      animation: floatUp 1.5s ease-out forwards;
+    }
+  
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+  
+    /* ==== PHÁO HOA ==== */
+    .firework {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10001;
+      animation: explode 1.2s ease-out forwards;
+    }
+  
+    @keyframes explode {
+      0% { transform: scale(0.2); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+  </style>
+  
+  <script>
+    /* ======= BONG BÓNG BAY TOÀN TRANG ======= */
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 40 + 10;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}vw`;
+  
+      const colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#F15BB5','#9B5DE5','#FF9F1C'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      bubble.style.background = color;
+      bubble.style.boxShadow = `0 0 15px ${color}`;
+      document.body.appendChild(bubble);
+  
+      setTimeout(() => bubble.remove(), 8000);
+    }
+    setInterval(createBubble, 200);
+  
+    /* ======= TUYẾT RƠI ======= */
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.textContent = '❄';
+      snowflake.style.left = `${Math.random() * 100}vw`;
+      snowflake.style.fontSize = `${Math.random() * 12 + 10}px`;
+      snowflake.style.opacity = Math.random();
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 10000);
+    }
+    setInterval(createSnowflake, 300);
+  
+    /* ======= HOA / TIM THEO CHUỘT ======= */
+    document.addEventListener('mousemove', (e) => {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const emojis = ['💖', '🌸', '💐', '💞', '🌼', '🌷'];
+      particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      particle.style.left = `${e.clientX}px`;
+      particle.style.top = `${e.clientY}px`;
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 1500);
+    });
+  
+    /* ======= PHÁO HOA NGẪU NHIÊN ======= */
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.classList.add('firework');
+      const size = Math.random() * 20 + 10;
+      firework.style.width = `${size}px`;
+      firework.style.height = `${size}px`;
+      firework.style.left = `${Math.random() * 100}vw`;
+      firework.style.top = `${Math.random() * 80}vh`;
+  
+      const colors = ['#ff0000','#00ffcc','#ffff00','#ff66cc','#00ccff','#ff9933'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      firework.style.background = color;
+      firework.style.boxShadow = `0 0 20px ${color}`;
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 1200);
+    }
+    setInterval(createFirework, 1500);
+  </script>
+  
+<body>
+  <div class="hello-fullscreen">Hello</div>
+       <!-- Hiệu ứng bong bóng toàn trang -->
+    <div class="bubbles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <!-- ===== HEADER: Banner + Navbar ===== -->
+    <header>
+        <div class="banner">
+            <h1 class="blink-title">TRẦN THỊ YẾN NHI</h1>
+            <p>Front-End Developer</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#career">Nghề nghiệp</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <!-- Thông tin cá nhân -->
+        <section id="about" class="card">
+            <h2>Thông tin cá nhân</h2>
+            <p><strong>Họ tên:</strong> Trần Thị Yến Nhi</p>
+            <p><strong>Ngày sinh:</strong> 19/02/2005</p>
+            <p><strong>Giới tính:</strong> Nữ</p>
+            <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</p>
+        </section>
+
+        <!-- Mục tiêu nghề nghiệp -->
+        <section id="career" class="card">
+            <h2>Mục tiêu nghề nghiệp</h2>
+            <p>Mong muốn trở thành Front-end Developer chuyên nghiệp, làm việc trong môi trường sáng tạo và không ngừng học hỏi các công nghệ mới như React, Vue, và UI/UX Design.</p>
+        </section>
+
+        <!-- Sở thích -->
+        <section id="hobbies" class="card">
+            <h2>Sở thích</h2>
+            <ul>
+                <p>🎵 Nghe nhạc</p>
+                <p>📸 Chụp ảnh</p>
+                <a>✈️ Du lịch</a>
+                <p>💻 Học lập trình</p>
+            </ul>
+        </section>
+
+        <!-- Ngôn ngữ & Kỹ năng -->
+        <section id="skills" class="card grid-2">
+            <div>
+                <h2>Ngôn ngữ</h2>
+                <p> Tiếng Anh: Trung bình</p>
+                <p> Tiếng Việt: Thành thạo</p>
+            </div>
+            <div>
+                <h2>Kỹ năng</h2>
+                <ul>
+                    <li>HTML / CSS / JS</li>
+                    <li>Thiết kế giao diện web</li>
+                    <li>Làm việc nhóm</li>
+                    <li>Tư duy logic & sáng tạo</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Chứng chỉ - Giải thưởng -->
+        <section id="awards" class="card">
+            <h2>Chứng chỉ - Giải thưởng</h2>
+            <p>Không có</p>
+        </section>
+
+        <!-- Dự án -->
+        <section id="projects" class="card">
+            <h2>Dự án cá nhân</h2>
+            <ul>
+                <p><strong>Portfolio Website:</strong> Thiết kế trang giới thiệu cá nhân bằng HTML, CSS, JS.</p>
+                <p><strong>Mini Blog:</strong> Xây dựng blog cá nhân với chức năng đăng bài và tìm kiếm.</p>
+            </ul>
+        </section>
+
+        <!-- Ảnh cá nhân -->
+        <section id="gallery" class="card gallery">
+            <h2>Ảnh cá nhân</h2>
+            <div class="image-box">
+                <img src="emages/avatar1.jpg" alt="Ảnh 1">
+                <img src="emages/avatar4.jpg" alt="Ảnh 2">
+                <img src="emages/avatar3.jpg" alt="Ảnh 3">
+                <img src="emages/avatar2.jpg" alt="Ảnh 4">
+            </div>
+        </section>
+
+        <!-- Liên hệ -->
+        <section id="contact" class="card">
+            <h2>Liên hệ</h2>
+            <p>📧 Email: <a href ="https://nhitran19022005@gmail.com" target="_blank">nhitran19022005@gmail.com</a></p>
+            <p>🌐 GitHub: <a href="https://github.com/nhitty5912" target="_blank">github.com/nhitty5912</a></p>
+            <p>📘 Facebook: <a href="https://facebook.com/nhitty.05" target="_blank">facebook.com</a></p>
+            <p>📸 Instagram: <a href="https://instagram.com/yennhi" target="_blank">@yennhi</a></p>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2025 Trần Thị Yến Nhi | Designed with ❤️</p>
+    </footer>
+</body>
+</html>
